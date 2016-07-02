@@ -75,10 +75,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandArgs.cs" />
-    <Compile Include="Commands.cs" />
-    <Compile Include="ConstData.cs" />
-    <Compile Include="DataBase.cs" />
+    <Compile Include="commands\CommandArgs.cs" />
+    <Compile Include="commands\Commands.cs" />
+    <Compile Include="data\ConstData.cs" />
+    <Compile Include="data\DataBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tars.cs" />
