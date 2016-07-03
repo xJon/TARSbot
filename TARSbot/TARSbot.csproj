@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E325B509-2261-4868-965D-64F7591DC59C}</ProjectGuid>
+    <ProjectGuid>{DA267DAB-D0DC-4569-B8C3-20F3136A1E84}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TARSbot</RootNamespace>
@@ -167,128 +167,99 @@
     <None Include="images\ffmemes\1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\2.jpg">
+    <None Include="images\ffmemes\2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\3.jpg">
+    <None Include="images\ffmemes\3.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\4.jpg">
+    <None Include="images\ffmemes\4.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\5.jpg">
+    <None Include="images\ffmemes\5.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\6.jpg">
+    <None Include="images\ffmemes\6.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\7.jpg">
+    <None Include="images\ffmemes\7.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\8.jpg">
+    <None Include="images\ffmemes\8.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\9.jpg">
+    <None Include="images\ffmemes\9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\10.jpg">
+    <None Include="images\ffmemes\10.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\11.jpg">
+    <None Include="images\ffmemes\11.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\12.jpg">
+    <None Include="images\ffmemes\12.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\13.jpg">
+    <None Include="images\ffmemes\13.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\14.jpg">
+    <None Include="images\ffmemes\14.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\15.jpg">
+    <None Include="images\ffmemes\15.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\16.jpg">
+    <None Include="images\ffmemes\16.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\17.jpg">
+    <None Include="images\ffmemes\17.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\18.jpg">
+    <None Include="images\ffmemes\18.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\19.jpg">
+    <None Include="images\ffmemes\19.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\20.jpg">
+    <None Include="images\ffmemes\20.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\21.gif">
+    <None Include="images\ffmemes\21.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\22.jpg">
+    <None Include="images\ffmemes\22.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\22.jpg">
+    <None Include="images\ffmemes\22.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\23.jpg">
+    <None Include="images\ffmemes\23.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\24.jpg">
+    <None Include="images\ffmemes\24.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\25.jpg">
+    <None Include="images\ffmemes\25.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\26.jpg">
+    <None Include="images\ffmemes\26.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\27.jpg">
+    <None Include="images\ffmemes\27.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\28.gif">
+    <None Include="images\ffmemes\28.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\29.jpg">
+    <None Include="images\ffmemes\29.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="images\ffmemes\30.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Include="images\ffmemes\31.jpg">
+    <None Include="images\ffmemes\31.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="images\ffmemes\11.jpg" />
-    <Content Include="images\ffmemes\12.jpg" />
-    <Content Include="images\ffmemes\13.jpg" />
-    <Content Include="images\ffmemes\14.jpg" />
-    <Content Include="images\ffmemes\15.jpg" />
-    <Content Include="images\ffmemes\16.jpg" />
-    <Content Include="images\ffmemes\17.jpg" />
-    <Content Include="images\ffmemes\18.jpg" />
-    <Content Include="images\ffmemes\19.jpg" />
-    <Content Include="images\ffmemes\2.jpg" />
-    <Content Include="images\ffmemes\20.jpg" />
-    <Content Include="images\ffmemes\21.gif" />
-    <Content Include="images\ffmemes\22.jpg" />
-    <Content Include="images\ffmemes\23.jpg" />
-    <Content Include="images\ffmemes\24.jpg" />
-    <Content Include="images\ffmemes\25.jpg" />
-    <Content Include="images\ffmemes\26.jpg" />
-    <Content Include="images\ffmemes\27.jpg" />
-    <Content Include="images\ffmemes\28.gif" />
-    <Content Include="images\ffmemes\29.jpg" />
-    <Content Include="images\ffmemes\3.jpg" />
-    <Content Include="images\ffmemes\30.jpg" />
-    <Content Include="images\ffmemes\31.jpg" />
-    <Content Include="images\ffmemes\4.jpg" />
-    <Content Include="images\ffmemes\5.jpg" />
-    <Content Include="images\ffmemes\6.jpg" />
-    <Content Include="images\ffmemes\7.jpg" />
-    <Content Include="images\ffmemes\8.jpg" />
-    <Content Include="images\ffmemes\9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
