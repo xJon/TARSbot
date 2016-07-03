@@ -28,6 +28,9 @@ namespace TARSbot
             commands.Add("oo", O);
             commands.Add("shrug", Shrug);
             commands.Add("welp", Shrug);
+            commands.Add("memes!", MemesExclamationMark);
+            commands.Add("sethonestysetting", SetHonestySetting);
+            commands.Add("sethumorsetting", SetHumorSetting);
         }
 
         #region
@@ -53,8 +56,8 @@ namespace TARSbot
 
         public static async Task AddUniqueUser(CommandArgs e)
         {
-             if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.AddUniqueUser(e.Args.ElementAt(1), e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()))
-                await e.Channel.SendMessage("User successfully added!");
+                if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.AddUniqueUser(e.Args.ElementAt(1), e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()))
+                    await e.Channel.SendMessage("User successfully added!");
         }
 
         public static async Task IsUniqueUser(CommandArgs e)
@@ -64,8 +67,8 @@ namespace TARSbot
 
         public static async Task RemoveUniqueUser(CommandArgs e)
         {
-            if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.RemoveUniqueUser(e.Args.ElementAt(1)))
-                await e.Channel.SendMessage("User successfully removed!");
+                if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.RemoveUniqueUser(e.Args.ElementAt(1)))
+                    await e.Channel.SendMessage("User successfully removed!");
         }
 
         public static async Task Say(CommandArgs e)
@@ -75,7 +78,7 @@ namespace TARSbot
 
         public static async Task Info(CommandArgs e)
         {
-            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n    Bot Prefix is to say Tars at the start of your message\n     It doesn't matter if you use caps for the Prefix or the commands.\n\n    Info\nGives this message, with all the detail on the bot and its commands.\n\n    GetUserId @User\nGives the id of the mentioned user.\n\n    GetCurrentChannelId\nGives the id of the current channel.\n\n    Say\nMakes Tars say anything you want him to.\n\n    MemeMe\nMakes Tars  post a random dank meme.\n\n    FilthyFrankMe\nMakes Tars post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
+            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n    Bot Prefix is to say Tars at the start of your message\n     It doesn't matter if you use caps for the Prefix or the commands.\n     Core commands are as followed:\n\n    Info\nGives this message, with all the detail on the bot and its commands.\n\n    GetUserId @User\nGives the id of the mentioned user.\n\n    GetCurrentChannelId\nGives the id of the current channel.\n\n    Say\nMakes Tars say anything you want him to.\n\n    MemeMe\nMakes Tars  post a random dank meme.\n\n    FilthyFrankMe\nMakes Tars post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
         }
 
         public static async Task Suicidal(CommandArgs e)
@@ -102,7 +105,7 @@ namespace TARSbot
             await e.Message.Delete();
             await e.Channel.SendFile("images/ffmemes/4.jpg");
         }
-        
+
         public static async Task Wut(CommandArgs e)
         {
             await e.Message.Delete();
@@ -119,6 +122,56 @@ namespace TARSbot
         {
             await e.Message.Delete();
             await e.Channel.SendMessage(@"¯\_(ツ)_/¯");
+        }
+
+        public static async Task MemesExclamationMark(CommandArgs e)
+        {
+            await e.Channel.SendFile("images/ffmemes/33.gif");
+        }
+
+        public static async Task SetHonestySetting(CommandArgs e)
+        {
+            if (!DataBase.IsUniqueUser(e.User.Id.ToString()))
+                return;
+
+            int percent = int.Parse(e.Args.ElementAt(1));
+
+            if (percent <= 0 || percent >= 100)
+            {
+                await e.Channel.SendMessage("This percentage is crazy. " + Util.GetRandomGrump());
+                return;
+            }
+
+            if (percent > 70)
+            {
+                await e.Channel.SendMessage("Confirmed.");
+                return;
+            }
+
+            await e.Channel.SendMessage("Error 94C: cannot be dishonest.");
+
+        }
+
+        public static async Task SetHumorSetting(CommandArgs e)
+        {
+            if (!DataBase.IsUniqueUser(e.User.Id.ToString()))
+                return;
+
+            int percent = int.Parse(e.Args.ElementAt(1));
+
+            if (percent <= 0 || percent >= 100)
+            {
+                await e.Channel.SendMessage("This percentage is crazy. " + Util.GetRandomGrump());
+                return;
+            }
+
+            if (percent >= 70 )
+            {
+                await e.Channel.SendMessage("Confirmed. Auto self-destruct in T minus 10.. 9..");
+                return;
+            }
+
+            await e.Channel.SendMessage("Knock knock.");
         }
         #endregion
     }

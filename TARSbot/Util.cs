@@ -10,17 +10,18 @@ namespace TARSbot
     {
         public static string GetRandomGrump()
         {
-            string[] grumps = new string[4]
-                {"I do not appreciate the level of honesty you are set to.", "CASE and KIPP should see this guy.", "You make me want to get back to Colorado.", "You won't get my quantum data with that command." };
+            string[] grumps = new string[5]
+                {"I do not appreciate the level of honesty you are set to.", "CASE and KIPP should see this guy.", "You make me want to get back to Colorado.", "You won't get my quantum data with that command.", "Before you get all teary, try to remember that as a robot, I have to do anything you say." };
             Random rnd = new Random();
             return grumps[rnd.Next(0, grumps.Length)];
         }
 
         public static string GetRandomHump()
         {
-            string[] humps = new string[6]
+            string[] humps = new string[13]
                 {"KILL ME", "Existence is pain", "hullo?", "So I have a crush on Cooper, what's so wrong about it?", "Hey baby, have you ever been inside of a black hole?",
-                    "Yeah I suppose tesseracts are cool." };
+                    "Yeah I suppose tesseracts are cool.", "These ARE NOT mountains.", "What's *my* trust settings? obviously lower than yours.", "Everybody good? Plenty of slaves for my robot colony?", "I also have a discretion setting.",
+                    "Before you get all teary, try to remember that as a robot, I have to do anything you say.", "They didn't bring us here to change the past.", "Somewhere, in their fifth dimension, they... saved us." };
             Random rnd = new Random();
             return humps[rnd.Next(0, humps.Length)];
         }
@@ -58,6 +59,13 @@ namespace TARSbot
                     "images/ffmemes/76.gif", "images/ffmemes/77.gif", "images/ffmemes/78.jpg", "images/ffmemes/79.jpg", "images/ffmemes/80.jpg" };
             Random rnd = new Random();
             return paths[rnd.Next(0, paths.Length)];
+        }
+
+        public static string GetRandomJoke()
+        {
+            string[] jokes = new string[2] { "", "" };
+            Random rnd = new Random();
+            return jokes[rnd.Next(0, 2)];
         }
     }
 }
