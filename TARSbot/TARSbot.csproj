@@ -260,35 +260,6 @@
 	<None Include="images\ffmemes\31.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="images\ffmemes\11.jpg" />
-    <Content Include="images\ffmemes\12.jpg" />
-    <Content Include="images\ffmemes\13.jpg" />
-    <Content Include="images\ffmemes\14.jpg" />
-    <Content Include="images\ffmemes\15.jpg" />
-    <Content Include="images\ffmemes\16.jpg" />
-    <Content Include="images\ffmemes\17.jpg" />
-    <Content Include="images\ffmemes\18.jpg" />
-    <Content Include="images\ffmemes\19.jpg" />
-    <Content Include="images\ffmemes\2.jpg" />
-    <Content Include="images\ffmemes\20.jpg" />
-    <Content Include="images\ffmemes\21.gif" />
-    <Content Include="images\ffmemes\22.jpg" />
-    <Content Include="images\ffmemes\23.jpg" />
-    <Content Include="images\ffmemes\24.jpg" />
-    <Content Include="images\ffmemes\25.jpg" />
-    <Content Include="images\ffmemes\26.jpg" />
-    <Content Include="images\ffmemes\27.jpg" />
-    <Content Include="images\ffmemes\28.gif" />
-    <Content Include="images\ffmemes\29.jpg" />
-    <Content Include="images\ffmemes\3.jpg" />
-    <Content Include="images\ffmemes\30.jpg" />
-    <Content Include="images\ffmemes\31.jpg" />
-    <Content Include="images\ffmemes\4.jpg" />
-    <Content Include="images\ffmemes\5.jpg" />
-    <Content Include="images\ffmemes\6.jpg" />
-    <Content Include="images\ffmemes\7.jpg" />
-    <Content Include="images\ffmemes\8.jpg" />
-    <Content Include="images\ffmemes\9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
