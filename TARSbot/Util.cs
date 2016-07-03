@@ -55,7 +55,7 @@ namespace TARSbot
                     "images/ffmemes/61.gif", "images/ffmemes/62.gif", "images/ffmemes/63.gif", "images/ffmemes/64.gif", "images/ffmemes/65.gif",
                     "images/ffmemes/66.gif", "images/ffmemes/67.jpg", "images/ffmemes/68.gif", "images/ffmemes/69.gif", "images/ffmemes/70.gif",
                     "images/ffmemes/71.gif", "images/ffmemes/72.gif", "images/ffmemes/73.gif", "images/ffmemes/74.gif", "images/ffmemes/75.gif",
-                    "images/ffmemes/76.gif", "images/ffmemes/77.gif", "images/ffmemes/78.jpg", "images/ffmemes/79.jpg", "images/ffmemes/80.jpg",};
+                    "images/ffmemes/76.gif", "images/ffmemes/77.gif", "images/ffmemes/78.jpg", "images/ffmemes/79.jpg", "images/ffmemes/80.jpg" };
             Random rnd = new Random();
             return paths[rnd.Next(0, paths.Length)];
         }

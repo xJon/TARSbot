@@ -25,7 +25,9 @@ namespace TARSbot
             commands.Add("triggered", Triggered);
             commands.Add("wut", Wut);
             commands.Add("o", O);
+            commands.Add("oo", O);
             commands.Add("shrug", Shrug);
+            commands.Add("welp", Shrug);
         }
 
         #region
@@ -78,44 +80,44 @@ namespace TARSbot
 
         public static async Task Suicidal(CommandArgs e)
         {
-            await e.Channel.Messages.First().Delete();
+            await e.Message.Delete();
             await e.Channel.SendFile("images/ffmemes/2.jpg");
 
         }
 
         public static async Task Great(CommandArgs e)
         {
-            await e.Channel.Messages.First().Delete();
+            await e.Message.Delete();
             await e.Channel.SendFile("images/ffmemes/17.jpg");
         }
 
         public static async Task Stop(CommandArgs e)
         {
-            await e.Channel.Messages.First().Delete();
+            await e.Message.Delete();
             await e.Channel.SendFile("images/ffmemes/28.gif");
         }
 
         public static async Task Triggered(CommandArgs e)
         {
-            await e.Channel.Messages.First().Delete();
+            await e.Message.Delete();
             await e.Channel.SendFile("images/ffmemes/4.jpg");
         }
         
         public static async Task Wut(CommandArgs e)
         {
-            await e.Channel.Messages.First().Delete();
+            await e.Message.Delete();
             await e.Channel.SendMessage(@"(◑_◑)");
         }
 
         public static async Task O(CommandArgs e)
         {
-            await e.Channel.Messages.First().Delete();
+            await e.Message.Delete();
             await e.Channel.SendMessage(@"(͡• ͜ʖ ͡•)");
         }
 
         public static async Task Shrug(CommandArgs e)
         {
-            await e.Channel.Messages.First().Delete();
+            await e.Message.Delete();
             await e.Channel.SendMessage(@"¯\_(ツ)_/¯");
         }
         #endregion
