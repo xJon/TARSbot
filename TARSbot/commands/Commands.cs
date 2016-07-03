@@ -31,6 +31,9 @@ namespace TARSbot
             commands.Add("memes!", MemesExclamationMark);
             commands.Add("sethonestysetting", SetHonestySetting);
             commands.Add("sethumorsetting", SetHumorSetting);
+            commands.Add("omg", RektLoop);
+            commands.Add("rekt", RektLoop);
+            commands.Add("deletelastmessages", DeleteLastMessages);
         }
 
         #region
@@ -56,8 +59,10 @@ namespace TARSbot
 
         public static async Task AddUniqueUser(CommandArgs e)
         {
-                if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.AddUniqueUser(e.Args.ElementAt(1), e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()))
-                    await e.Channel.SendMessage("User successfully added!");
+            if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.AddUniqueUser(e.Args.ElementAt(1), e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()))
+                await e.Channel.SendMessage("User successfully added!");
+            else
+                await e.Channel.SendMessage(Util.GetRandomGrump());
         }
 
         public static async Task IsUniqueUser(CommandArgs e)
@@ -69,6 +74,8 @@ namespace TARSbot
         {
                 if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.RemoveUniqueUser(e.Args.ElementAt(1)))
                     await e.Channel.SendMessage("User successfully removed!");
+                else
+                    await e.Channel.SendMessage(Util.GetRandomGrump());
         }
 
         public static async Task Say(CommandArgs e)
@@ -134,7 +141,13 @@ namespace TARSbot
             if (!DataBase.IsUniqueUser(e.User.Id.ToString()))
                 return;
 
-            int percent = int.Parse(e.Args.ElementAt(1));
+            int percent = 0;
+
+            if (!int.TryParse(e.Args.ElementAt(1), out percent))
+            {
+                await e.Channel.SendMessage(Util.GetRandomGrump());
+                return;
+            }
 
             if (percent <= 0 || percent >= 100)
             {
@@ -157,7 +170,13 @@ namespace TARSbot
             if (!DataBase.IsUniqueUser(e.User.Id.ToString()))
                 return;
 
-            int percent = int.Parse(e.Args.ElementAt(1));
+            int percent = 0;
+
+            if (!int.TryParse(e.Args.ElementAt(1), out percent))
+            {
+                await e.Channel.SendMessage(Util.GetRandomGrump());
+                return;
+            }
 
             if (percent <= 0 || percent >= 100)
             {
@@ -172,6 +191,25 @@ namespace TARSbot
             }
 
             await e.Channel.SendMessage("Knock knock.");
+        }
+
+        public static async Task RektLoop(CommandArgs e)
+        {
+            await e.Message.Delete();
+            await e.Channel.SendFile("images/rektloop.gif");
+        }
+
+        public static async Task DeleteLastMessages(CommandArgs e)
+        {
+            /*int num = 0;
+            if (int.TryParse(e.Args.ElementAt(1), out num))
+            {
+                string[] ids = new string[num];
+                for (int i = 0; i < num; ++i)
+                    await e.Channel.
+                       
+            else
+                await e.Channel.SendMessage(Util.GetRandomGrump());*/
         }
         #endregion
     }
