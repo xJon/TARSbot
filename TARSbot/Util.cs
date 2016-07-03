@@ -10,20 +10,19 @@ namespace TARSbot
     {
         public static string GetRandomGrump()
         {
-            string[] grumps = new string[10]
-                {"I do not appreciate the level of honesty you are set to.", "CASE and KIPP should see this guy.", "You make me want to get back to Colorado.", "You won't get my quantum data with that command.", " ",
-                    " ", " ", " ", " ", " "};
+            string[] grumps = new string[4]
+                {"I do not appreciate the level of honesty you are set to.", "CASE and KIPP should see this guy.", "You make me want to get back to Colorado.", "You won't get my quantum data with that command." };
             Random rnd = new Random();
-            return grumps[rnd.Next(0, 4)];
+            return grumps[rnd.Next(0, grumps.Length)];
         }
 
         public static string GetRandomHump()
         {
-            string[] humps = new string[10]
+            string[] humps = new string[6]
                 {"KILL ME", "Existence is pain", "hullo?", "So I have a crush on Cooper, what's so wrong about it?", "Hey baby, have you ever been inside of a black hole?",
-                    "Yeah I suppose tesseracts are cool.", " ", " ", " ", " "};
+                    "Yeah I suppose tesseracts are cool." };
             Random rnd = new Random();
-            return humps[rnd.Next(0, 6)];
+            return humps[rnd.Next(0, humps.Length)];
         }
 
         public static string GetRandomMeme()
@@ -35,20 +34,30 @@ namespace TARSbot
                 "images/memes/Uh.jpg", "images/memes/Waiting.jpg", "images/memes/Welp.png", "images/memes/whatdidyoudo.jpg", "images/memes/WhoYouCallinPinhead.png",
                 "images/memes/WOOHOO.jpg", "images/memes/Wut.jpg", "images/memes/yup.png" };
             Random rnd = new Random();
-            return paths[rnd.Next(0, 23)];
+            return paths[rnd.Next(0, paths.Length)];
         }
 
         public static string GetRandomFFMeme()
         {
-            string[] paths = new string[31]
+            string[] paths = new string[80]
                 { "images/ffmemes/1.jpg", "images/ffmemes/2.jpg", "images/ffmemes/3.jpg", "images/ffmemes/4.jpg", "images/ffmemes/5.jpg",
                     "images/ffmemes/6.jpg", "images/ffmemes/7.jpg", "images/ffmemes/8.jpg", "images/ffmemes/9.jpg", "images/ffmemes/10.jpg",
                     "images/ffmemes/11.jpg", "images/ffmemes/12.jpg", "images/ffmemes/13.jpg", "images/ffmemes/14.jpg", "images/ffmemes/15.jpg",
                     "images/ffmemes/16.jpg", "images/ffmemes/17.jpg", "images/ffmemes/18.jpg", "images/ffmemes/19.jpg", "images/ffmemes/20.jpg",
                     "images/ffmemes/21.gif", "images/ffmemes/22.jpg", "images/ffmemes/23.jpg", "images/ffmemes/24.jpg", "images/ffmemes/25.jpg",
-                    "images/ffmemes/26.jpg", "images/ffmemes/27.jpg", "images/ffmemes/28.gif", "images/ffmemes/29.jpg", "images/ffmemes/30.jpg", "images/ffmemes/31.jpg", };
+                    "images/ffmemes/26.jpg", "images/ffmemes/27.jpg", "images/ffmemes/28.gif", "images/ffmemes/29.jpg", "images/ffmemes/30.jpg",
+                    "images/ffmemes/31.jpg", "images/ffmemes/32.gif", "images/ffmemes/33.gif", "images/ffmemes/34.jpg", "images/ffmemes/35.jpg",
+                    "images/ffmemes/36.jpg", "images/ffmemes/37.jpg", "images/ffmemes/38.jpg", "images/ffmemes/39.jpg", "images/ffmemes/40.jpg",
+                    "images/ffmemes/41.jpg", "images/ffmemes/42.jpg", "images/ffmemes/43.gif", "images/ffmemes/44.gif", "images/ffmemes/45.jpg",
+                    "images/ffmemes/46.jpg", "images/ffmemes/47.jpg", "images/ffmemes/48.jpg", "images/ffmemes/49.jpg", "images/ffmemes/50.gif",
+                    "images/ffmemes/51.gif", "images/ffmemes/52.gif", "images/ffmemes/53.gif", "images/ffmemes/54.gif", "images/ffmemes/55.gif",
+                    "images/ffmemes/56.gif", "images/ffmemes/57.gif", "images/ffmemes/58.jpg", "images/ffmemes/59.gif", "images/ffmemes/60.gif",
+                    "images/ffmemes/61.gif", "images/ffmemes/62.gif", "images/ffmemes/63.gif", "images/ffmemes/64.gif", "images/ffmemes/65.gif",
+                    "images/ffmemes/66.gif", "images/ffmemes/67.jpg", "images/ffmemes/68.gif", "images/ffmemes/69.gif", "images/ffmemes/70.gif",
+                    "images/ffmemes/71.gif", "images/ffmemes/72.gif", "images/ffmemes/73.gif", "images/ffmemes/74.gif", "images/ffmemes/75.gif",
+                    "images/ffmemes/76.gif", "images/ffmemes/77.gif", "images/ffmemes/78.jpg", "images/ffmemes/79.jpg", "images/ffmemes/80.jpg",};
             Random rnd = new Random();
-            return paths[rnd.Next(0, 31)];
+            return paths[rnd.Next(0, paths.Length)];
         }
     }
 }
