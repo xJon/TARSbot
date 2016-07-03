@@ -201,15 +201,15 @@ namespace TARSbot
 
         public static async Task DeleteLastMessages(CommandArgs e)
         {
-            /*int num = 0;
-            if (int.TryParse(e.Args.ElementAt(1), out num))
+            int amount = 0;
+            if (int.TryParse(e.Args.ElementAt(1), out amount) && amount <= 100 && amount > 0)
             {
-                string[] ids = new string[num];
-                for (int i = 0; i < num; ++i)
-                    await e.Channel.
-                       
+                var msgs = await e.Channel.DownloadMessages(amount);
+                foreach (var m in msgs)
+                    await m.Delete();
+            }
             else
-                await e.Channel.SendMessage(Util.GetRandomGrump());*/
+                await e.Channel.SendMessage(Util.GetRandomGrump());
         }
         #endregion
     }
