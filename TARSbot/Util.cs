@@ -61,11 +61,11 @@ namespace TARSbot
             return paths[rnd.Next(0, paths.Length)];
         }
 
-        public static string GetRandomJoke()
+        public static bool IsAuthor(string id)
         {
-            string[] jokes = new string[2] { "", "" };
-            Random rnd = new Random();
-            return jokes[rnd.Next(0, 2)];
+            if (id == ConstData.authorId)
+                return true;
+            return false;
         }
     }
 }

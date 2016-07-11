@@ -72,7 +72,7 @@ namespace TARSbot
 
         public static async Task RemoveUniqueUser(CommandArgs e)
         {
-                if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.RemoveUniqueUser(e.Args.ElementAt(1)))
+                if (DataBase.IsUniqueUser(e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()) && !Util.IsAuthor(e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()) && DataBase.RemoveUniqueUser(e.Args.ElementAt(1)))
                     await e.Channel.SendMessage("User successfully removed!");
                 else
                     await e.Channel.SendMessage(Util.GetRandomGrump());
