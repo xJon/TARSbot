@@ -59,7 +59,7 @@ namespace TARSbot
 
         public static async Task AddUniqueUser(CommandArgs e)
         {
-            if (DataBase.IsUniqueUser(e.User.Id.ToString()) && DataBase.AddUniqueUser(e.Args.ElementAt(1), e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()))
+            if ((Util.IsAuthor(e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()) || (DataBase.IsUniqueUser(e.User.Id.ToString()))) && DataBase.AddUniqueUser(e.Args.ElementAt(1), e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()))
                 await e.Channel.SendMessage("User successfully added!");
             else
                 await e.Channel.SendMessage(Util.GetRandomGrump());
@@ -80,12 +80,13 @@ namespace TARSbot
 
         public static async Task Say(CommandArgs e)
         {
+            await e.Message.Delete();
             await e.Channel.SendMessage(e.Message.RawText.Remove(0, 8).ToString());
         }
 
         public static async Task Info(CommandArgs e)
         {
-            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n    Bot Prefix is to say Tars at the start of your message\n     It doesn't matter if you use caps for the Prefix or the commands.\n     Core commands are as followed:\n\n    Info\nGives this message, with all the detail on the bot and its commands.\n\n    GetUserId @User\nGives the id of the mentioned user.\n\n    GetCurrentChannelId\nGives the id of the current channel.\n\n    Say\nMakes Tars say anything you want him to.\n\n    MemeMe\nMakes Tars  post a random dank meme.\n\n    FilthyFrankMe\nMakes Tars post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
+            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     The Bot's Prefix is TARS, at the start of the message\n     It doesn't matter if you use caps for the Prefix or the commands.\n     Core commands are as followed:\n\n    Info\nGives this message, with all the detail on the bot and its commands.\n\n    GetUserId @User\nGives the id of the mentioned user.\n\n    GetCurrentChannelId\nGives the id of the current channel.\n\n    Say\nMakes Tars say anything you want him to.\n\n    MemeMe\nMakes Tars  post a random dank meme.\n\n    FilthyFrankMe\nMakes Tars post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
         }
 
         public static async Task Suicidal(CommandArgs e)
