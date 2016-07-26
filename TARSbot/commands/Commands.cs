@@ -81,7 +81,7 @@ namespace TARSbot
         public static async Task Say(CommandArgs e)
         {
             await e.Message.Delete();
-            await e.Channel.SendMessage(e.Message.RawText.Remove(0, 8).ToString());
+            await e.Channel.SendMessage(e.Message.RawText.Remove(0, 9).ToString());
         }
 
         public static async Task Info(CommandArgs e)
