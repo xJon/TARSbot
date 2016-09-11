@@ -11,7 +11,7 @@ namespace TARSbot
     {
         public static bool AddUniqueUser(string name, string id)
         {
-            using (LiteDatabase db = new LiteDatabase(ConstData.path))
+            using (var db = new LiteDatabase(ConstData.path))
             {
                 var uniqueUsers = db.GetCollection<UniqueUser>("uniqueUsers");
                 var uniqueUser = new UniqueUser { userName = name, userId = id };
@@ -22,7 +22,7 @@ namespace TARSbot
 
         public static bool RemoveUniqueUser(string name)
         {
-            using (LiteDatabase db = new LiteDatabase(ConstData.path))
+            using (var db = new LiteDatabase(ConstData.path))
             {
                 var uniqueUsers = db.GetCollection<UniqueUser>("uniqueUsers");
                 uniqueUsers.Delete(Query.EQ("userName", name));
@@ -32,7 +32,7 @@ namespace TARSbot
 
         public static bool IsUniqueUser(string id)
         {
-            using (LiteDatabase db = new LiteDatabase(ConstData.path))
+            using (var db = new LiteDatabase(ConstData.path))
             {
                 var uniqueUsers = db.GetCollection<UniqueUser>("uniqueUsers");
                 var resultUser = uniqueUsers.FindOne(Query.EQ("userId", id));

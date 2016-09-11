@@ -19,6 +19,7 @@ namespace TARSbot
             commands.Add("removeuniqueuser", RemoveUniqueUser);
             commands.Add("say", Say);
             commands.Add("info", Info);
+            commands.Add("help", Info);
             commands.Add("suicidal", Suicidal);
             commands.Add("great", Great);
             commands.Add("stop", Stop);
@@ -86,7 +87,7 @@ namespace TARSbot
 
         public static async Task Info(CommandArgs e)
         {
-            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     The Bot's Prefix is TARS, at the start of the message\n     It doesn't matter if you use caps for the Prefix or the commands.\n     Core commands are as followed:\n\n    Info\nGives this message, with all the detail on the bot and its commands.\n\n    GetUserId @User\nGives the id of the mentioned user.\n\n    GetCurrentChannelId\nGives the id of the current channel.\n\n    Say\nMakes Tars say anything you want him to.\n\n    MemeMe\nMakes Tars  post a random dank meme.\n\n    FilthyFrankMe\nMakes Tars post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
+            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     The Bot's Prefix is TARS, at the start of the message.\n     It doesn't matter if you use caps for the Prefix or the commands.\n\n    Info\nGives this message, with all the details on the bot and its commands.\n\n    GetUserId @User\nGives the ID of the mentioned user.\n\n    GetCurrentChannelId\nGives the ID of the current channel.\n\n    Say\nMakes TARS say anything you want him to.\n\n    MemeMe\nMakes TARS post a random dank meme.\n\n    FilthyFrankMe\nMakes TARS post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
         }
 
         public static async Task Suicidal(CommandArgs e)

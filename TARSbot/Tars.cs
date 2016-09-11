@@ -51,11 +51,11 @@ namespace TARSbot
             };
             client.JoinedServer += async (s, e) =>
             {
-                await e.Server.DefaultChannel.SendMessage("Hello, I'm TARS, made by <@96550262403010560>, and I'm ready to role the universe. ∞");
+                await e.Server.DefaultChannel.SendMessage("Hello, I'm TARS, made by <@96550262403010560>, and I'm ready to rule the universe. ∞");
             };
             client.ExecuteAndWait(async () =>
             {
-                await client.Connect(ConstData.loginToken);
+                await client.Connect(ConstData.loginToken, TokenType.Bot);
             });
 
         }
