@@ -60,8 +60,35 @@ namespace TARSbot
 
         public static async Task AddUniqueUser(CommandArgs e)
         {
-            if ((Util.IsAuthor(e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()) || (DataBase.IsUniqueUser(e.User.Id.ToString()))) && DataBase.AddUniqueUser(e.Args.ElementAt(1), e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault().Id.ToString()))
-                await e.Channel.SendMessage("User successfully added!");
+            if (Util.IsAuthor(e.User.Id.ToString()) || (DataBase.IsUniqueUser(e.User.Id.ToString())))
+            {
+                switch (e.Args.ElementAt(1).FirstOrDefault().ToString())
+                {
+                    case "tag":
+                        if (DataBase.AddUniqueUser(e.Args.ElementAt(2), e.Server.FindUsers(e.Args.ElementAt(2), true).FirstOrDefault().Id.ToString()))
+                            await e.Channel.SendMessage("User successfully added!");
+                        break;
+                    case "id":
+                        ulong id = 0;
+                        if (ulong.TryParse(e.Args.ElementAt(2).FirstOrDefault().ToString(), out id))
+                        {
+                            if (DataBase.AddUniqueUser(e.Server.GetUser(id).Name, e.Args.ElementAt(2).FirstOrDefault().ToString()))
+                                await e.Channel.SendMessage("User successfully added!");
+                        }
+                        else
+                            await e.Channel.SendMessage(Util.GetRandomGrump());
+                        break;
+
+                    case "name":
+                        if (DataBase.AddUniqueUser(e.Args.ElementAt(2), e.Server.FindUsers(e.Args.ElementAt(2), false).FirstOrDefault().Id.ToString()))
+                            await e.Channel.SendMessage("User successfully added!");
+                        break;
+
+                    default:
+                        await e.Channel.SendMessage(Util.GetRandomGrump());
+                        break;
+                }
+            }
             else
                 await e.Channel.SendMessage(Util.GetRandomGrump());
         }
@@ -87,7 +114,7 @@ namespace TARSbot
 
         public static async Task Info(CommandArgs e)
         {
-            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     The Bot's Prefix is TARS, at the start of the message.\n     It doesn't matter if you use caps for the Prefix or the commands.\n\n    Info\nGives this message, with all the details on the bot and its commands.\n\n    GetUserId @User\nGives the ID of the mentioned user.\n\n    GetCurrentChannelId\nGives the ID of the current channel.\n\n    Say\nMakes TARS say anything you want him to.\n\n    MemeMe\nMakes TARS post a random dank meme.\n\n    FilthyFrankMe\nMakes TARS post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
+            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     The Bot's Prefix is TARS, at the start of the message.\n     It doesn't matter if you use caps for the Prefix or the commands.\n\n    Info\nGives this message, with all the details on the bot and its commands.\n\n    GetUserId @User\nGives the ID of the mentioned user.\n\n    GetCurrentChannelId\nGives the ID of the current channel.\n\n    Say\nMakes TARS say anything you want him to.\n\n    MemeMe\nMakes TARS post a random dank meme.\n\n    FilthyFrankMe\nMakes TARS post a random dank filthy frank meme.\n\n    AddUniqueUser (tag/id/name)/RemoveUniqueUser/IsUniqueUser\nAdds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
         }
 
         public static async Task Suicidal(CommandArgs e)
