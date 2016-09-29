@@ -11,6 +11,7 @@ namespace TARSbot
     {
         private DiscordClient client;
         public static Dictionary<string, Func<CommandArgs, Task>> commands;
+        public static string prefix;
 
         public Tars()
         {
@@ -37,16 +38,16 @@ namespace TARSbot
                     return;
                 }
 
-                if (!e.Message.RawText.ToLower().StartsWith("tars"))
+                prefix = DataBase.GetTarsPrefix().Trim().ToLower();
+                if (!e.Message.RawText.ToLower().StartsWith(prefix))
                     return;
 
-                var trigger = string.Join("", e.Message.RawText.Substring(5).TakeWhile(c => c != ' '));
+                var trigger = string.Join("", e.Message.RawText.Substring(prefix.Length + 1).TakeWhile(c => c != ' '));
                 if (!commands.ContainsKey(trigger.ToLower()))
                 {
                     await e.Channel.SendMessage(Util.GetRandomGrump());
                     return;
                 }
-
                 await commands[trigger.ToLower()](new CommandArgs(e));
             };
             client.JoinedServer += async (s, e) =>

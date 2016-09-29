@@ -61,11 +61,27 @@ namespace TARSbot
             return paths[rnd.Next(0, paths.Length)];
         }
 
+        // TODO: Add all grumps, humps and memes into data base
+
         public static bool IsAuthor(string id)
         {
             if (id == ConstData.authorId)
                 return true;
             return false;
+        }
+
+        public static Discord.User GetUserSecondElement(CommandArgs e)
+        {
+            if (e.Args.Count() < 2)
+                return null;
+
+            Discord.User user = null;
+            ulong id = 0;
+            if (ulong.TryParse(e.Args.ElementAt(1), out id))
+                user = e.Server.GetUser(id);
+            else if (e.Server.FindUsers(e.Args.ElementAt(1), false).FirstOrDefault() != null)
+                user = e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault();
+            return user;
         }
     }
 }
