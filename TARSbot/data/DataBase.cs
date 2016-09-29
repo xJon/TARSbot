@@ -48,7 +48,7 @@ namespace TARSbot
             {
                 var customPrefix = db.GetCollection<Prefix>("prefix");
                 var prefix = new Prefix { customPrefix = newPrefix, Id = 1 };
-                if (GetTarsPrefix() == "BETARS")
+                if (GetTarsPrefix() == "TARS")
                     customPrefix.Insert(prefix);
                 else
                     customPrefix.Update(prefix);
@@ -62,7 +62,7 @@ namespace TARSbot
             {
                 var customPrefix = db.GetCollection<Prefix>("prefix");
                 var currentPrefix = customPrefix.FindById(1);
-                return (currentPrefix != null && currentPrefix.customPrefix != null) ? currentPrefix.customPrefix : "BETARS";
+                return (currentPrefix != null && currentPrefix.customPrefix != null) ? currentPrefix.customPrefix : "TARS";
             }
         }
     }
