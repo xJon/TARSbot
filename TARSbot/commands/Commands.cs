@@ -233,7 +233,7 @@ namespace TARSbot
 
         public static async Task SetTarsPrefix(CommandArgs e)
         {
-            if (DataBase.IsUniqueUser(e.User.Id.ToString()) && e.Args.Count() >= 2 && DataBase.SetTarsPrefix(e.Args.ElementAt(1)))
+            if (e.User.GetPermissions(e.Channel).ManageMessages && DataBase.IsUniqueUser(e.User.Id.ToString()) && e.Args.Count() >= 2 && DataBase.SetTarsPrefix(e.Args.ElementAt(1)))
                 await e.Channel.SendMessage("Prefix changed successfully!");
             else
                 await e.Channel.SendMessage(Util.GetRandomGrump());
