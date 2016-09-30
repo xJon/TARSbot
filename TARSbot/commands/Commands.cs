@@ -35,8 +35,8 @@ namespace TARSbot
             commands.Add("omg", RektLoop);
             commands.Add("rekt", RektLoop);
             commands.Add("deletelastmessages", DeleteLastMessages);
-            commands.Add("setprefix", SetTarsPrefix);
-            commands.Add("getprefix", GetTarsPrefix);
+            commands.Add("setprefix", SetServerPrefix);
+            commands.Add("getprefix", GetServerPrefix);
         }
 
         #region
@@ -65,11 +65,11 @@ namespace TARSbot
         public static async Task AddUniqueUser(CommandArgs e)
         {
             Discord.User user = Util.GetUserSecondElement(e);
-            if ((Util.IsAuthor(e.User.Id.ToString()) || (DataBase.IsUniqueUser(e.User.Id.ToString()))) && user != null)
+            if ((Util.IsAuthor(e.User.Id.ToString()) || (DataBase.IsUniqueUser(e.User.Id))) && user != null)
             {
-                if (DataBase.AddUniqueUser(user.Name, user.Id.ToString()))
+                if (DataBase.AddUniqueUser(user.Name, user.Id))
                     await e.Channel.SendMessage("User successfully added!");
-                else if (DataBase.AddUniqueUser(user.Name, user.Id.ToString()))
+                else if (DataBase.AddUniqueUser(user.Name, user.Id))
                     await e.Channel.SendMessage("User successfully added!");
                 else
                     await e.Channel.SendMessage(Util.GetRandomGrump());
@@ -82,7 +82,7 @@ namespace TARSbot
         {
             Discord.User user = Util.GetUserSecondElement(e);
             if (user != null)
-                await e.Channel.SendMessage(DataBase.IsUniqueUser(user.Id.ToString()).ToString() + ".");
+                await e.Channel.SendMessage(DataBase.IsUniqueUser(user.Id).ToString() + ".");
             else
                 await e.Channel.SendMessage(Util.GetRandomGrump());
         }
@@ -90,7 +90,7 @@ namespace TARSbot
         public static async Task RemoveUniqueUser(CommandArgs e)
         {
             Discord.User user = Util.GetUserSecondElement(e);
-            if (user != null && DataBase.IsUniqueUser(user.Id.ToString()) && !Util.IsAuthor(user.Id.ToString()) && DataBase.RemoveUniqueUser(user.Name))
+            if (user != null && DataBase.IsUniqueUser(user.Id) && !Util.IsAuthor(user.Id.ToString()) && DataBase.RemoveUniqueUser(user.Id))
                 await e.Channel.SendMessage("User successfully removed!");
             else
                 await e.Channel.SendMessage(Util.GetRandomGrump());
@@ -104,7 +104,7 @@ namespace TARSbot
 
         public static async Task Info(CommandArgs e)
         {
-            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     The Bot's default prefix is TARS, at the start of the message.\n     The prefix always uses low caps.\n\n    Info\nGives this message, with all the details on the bot and its commands.\n\n    SetPrefix newPrefix\nChanges the current prefix to the new one.\n\n    GetUserId\nBy user id or name (no nicknames), it gives the ID of the mentioned user.\n\n    GetCurrentChannelId\nGives the ID of the current channel.\n\n    Say\nMakes TARS say anything you want him to.\n\n    MemeMe\nMakes TARS post a random dank meme.\n\n    FilthyFrankMe\nMakes TARS post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\n By user id or name (no nicknames), it adds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
+            await e.Channel.SendMessage("```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     The Bot's default prefix is TARS, at the start of the message.\n     The prefix always uses low caps.\n\n    Info\nGives this message, with all the details on the bot and its commands.\n\n    SetPrefix newPrefix\nChanges the current prefix to the new one. (Works per server, needs manage messages permissions and unique user)\n\n    GetUserId\nBy user id or name (no nicknames), it gives the ID of the mentioned user.\n\n    GetCurrentChannelId\nGives the ID of the current channel.\n\n    Say\nMakes TARS say anything you want him to.\n\n    MemeMe\nMakes TARS post a random dank meme.\n\n    FilthyFrankMe\nMakes TARS post a random dank filthy frank meme.\n\n    AddUniqueUser/RemoveUniqueUser/IsUniqueUser\n By user id or name (no nicknames), it adds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```");
         }
 
         public static async Task Suicidal(CommandArgs e)
@@ -157,7 +157,7 @@ namespace TARSbot
 
         public static async Task SetHonestySetting(CommandArgs e)
         {
-            if (!DataBase.IsUniqueUser(e.User.Id.ToString()))
+            if (!DataBase.IsUniqueUser(e.User.Id))
                 return;
 
             int percent = 0;
@@ -186,7 +186,7 @@ namespace TARSbot
 
         public static async Task SetHumorSetting(CommandArgs e)
         {
-            if (!DataBase.IsUniqueUser(e.User.Id.ToString()))
+            if (!DataBase.IsUniqueUser(e.User.Id))
                 return;
 
             int percent = 0;
@@ -231,17 +231,17 @@ namespace TARSbot
                 await e.Channel.SendMessage(Util.GetRandomGrump());
         }
 
-        public static async Task SetTarsPrefix(CommandArgs e)
+        public static async Task SetServerPrefix(CommandArgs e)
         {
-            if (e.User.GetPermissions(e.Channel).ManageMessages && DataBase.IsUniqueUser(e.User.Id.ToString()) && e.Args.Count() >= 2 && DataBase.SetTarsPrefix(e.Args.ElementAt(1)))
+            if (e.User.GetPermissions(e.Channel).ManageMessages && DataBase.IsUniqueUser(e.User.Id) && e.Args.Count() >= 2 && DataBase.SetServerPrefix(e.Args.ElementAt(1), e.Server.Id))
                 await e.Channel.SendMessage("Prefix changed successfully!");
             else
                 await e.Channel.SendMessage(Util.GetRandomGrump());
         }
 
-        public static async Task GetTarsPrefix(CommandArgs e)
+        public static async Task GetServerPrefix(CommandArgs e)
         {
-            await e.Channel.SendMessage("Are you stupid? Anyway: `" + DataBase.GetTarsPrefix() + "`");
+            await e.Channel.SendMessage("Are you stupid? Anyway: `" + DataBase.GetServerPrefix(e.Server.Id) + "`");
         }
 
         // TODO: Add eval command

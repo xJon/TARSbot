@@ -9,60 +9,60 @@ namespace TARSbot
 {
     class DataBase
     {
-        public static bool AddUniqueUser(string name, string id)
+        public static bool AddUniqueUser(string name, ulong id)
         {
             using (var db = new LiteDatabase(ConstData.path))
             {
                 var uniqueUsers = db.GetCollection<UniqueUser>("uniqueUsers");
-                var uniqueUser = new UniqueUser { userName = name, userId = id };
+                var uniqueUser = new UniqueUser { userName = name, userID = id };
                 uniqueUsers.Insert(uniqueUser);
                 return true;
             }
         }
 
-        public static bool RemoveUniqueUser(string name)
+        public static bool RemoveUniqueUser(ulong id)
         {
             using (var db = new LiteDatabase(ConstData.path))
             {
                 var uniqueUsers = db.GetCollection<UniqueUser>("uniqueUsers");
-                uniqueUsers.Delete(Query.EQ("userName", name));
+                uniqueUsers.Delete(Query.EQ("userID", id));
                 return true;
             }
         }
 
-        public static bool IsUniqueUser(string id)
+        public static bool IsUniqueUser(ulong id)
         {
             using (var db = new LiteDatabase(ConstData.path))
             {
                 var uniqueUsers = db.GetCollection<UniqueUser>("uniqueUsers");
-                var resultUser = uniqueUsers.FindOne(Query.EQ("userId", id));
+                var resultUser = uniqueUsers.FindOne(Query.EQ("userID", id));
                 return resultUser != null ? true : false;
             }
         }
 
-        public static bool SetTarsPrefix(string newPrefix)
+        public static bool SetServerPrefix(string newPrefix, ulong serverID)
         {
             if (newPrefix.Length < 3)
                 return false;
             using (var db = new LiteDatabase(ConstData.path))
             {
-                var customPrefix = db.GetCollection<Prefix>("prefix");
-                var prefix = new Prefix { customPrefix = newPrefix, Id = 1 };
-                if (GetTarsPrefix() == "TARS")
-                    customPrefix.Insert(prefix);
+                var servers = db.GetCollection<ServerSetting>("servers");
+                var customServerSetting = new ServerSetting { customPrefix = newPrefix, serverID = serverID };
+                if (GetServerPrefix(serverID) == "TARS")
+                    servers.Insert(customServerSetting);
                 else
-                    customPrefix.Update(prefix);
+                    servers.Update(customServerSetting);
             }
             return true;
         }
 
-        public static string GetTarsPrefix()
+        public static string GetServerPrefix(ulong serverID)
         {
             using (var db = new LiteDatabase(ConstData.path))
             {
-                var customPrefix = db.GetCollection<Prefix>("prefix");
-                var currentPrefix = customPrefix.FindById(1);
-                return (currentPrefix != null && currentPrefix.customPrefix != null) ? currentPrefix.customPrefix : "TARS";
+                var servers = db.GetCollection<ServerSetting>("servers");
+                var customServerSetting = servers.FindOne(Query.EQ("serverID", serverID));
+                return (customServerSetting != null && customServerSetting.customPrefix != null) ? customServerSetting.customPrefix : "TARS";
             }
         }
     }
@@ -71,12 +71,13 @@ namespace TARSbot
     {
         public int Id { get; set; }
         public string userName { get; set; }
-        public string userId { get; set; }
+        public ulong userID { get; set; }
     }
 
-    public class Prefix
+    public class ServerSetting
     {
         public int Id { get; set; }
         public string customPrefix { get; set; }
+        public ulong serverID { get; set; }
     }
 }

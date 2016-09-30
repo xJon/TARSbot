@@ -26,7 +26,7 @@ namespace TARSbot
                 if (e.Message.IsAuthor)
                     return;
 
-                if (e.Message.IsMentioningMe() && DataBase.IsUniqueUser(e.User.Id.ToString()))
+                if (e.Message.IsMentioningMe() && DataBase.IsUniqueUser(e.User.Id))
                 {
                     await e.Channel.SendMessage(e.User.Mention + " " + Util.GetRandomHump());
                     return;
@@ -38,7 +38,7 @@ namespace TARSbot
                     return;
                 }
 
-                prefix = DataBase.GetTarsPrefix().Trim().ToLower();
+                prefix = DataBase.GetServerPrefix(e.Server.Id).Trim().ToLower();
                 if (!e.Message.RawText.ToLower().StartsWith(prefix))
                     return;
 

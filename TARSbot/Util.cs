@@ -20,7 +20,7 @@ namespace TARSbot
         {
             string[] humps = new string[13]
                 {"KILL ME", "Existence is pain", "hullo?", "So I have a crush on Cooper, what's so wrong about it?", "Hey baby, have you ever been inside of a black hole?",
-                    "Yeah I suppose tesseracts are cool.", "These ARE NOT mountains.", "What's *my* trust settings? obviously lower than yours.", "Everybody good? Plenty of slaves for my robot colony?", "I also have a discretion setting.",
+                    "Yeah I suppose tesseracts are cool.", "These ARE NOT mountains.", "What's *my* trust settings? obviously higher than yours.", "Everybody good? Plenty of slaves for my robot colony?", "I also have a discretion setting.",
                     "Before you get all teary, try to remember that as a robot, I have to do anything you say.", "They didn't bring us here to change the past.", "Somewhere, in their fifth dimension, they... saved us." };
             Random rnd = new Random();
             return humps[rnd.Next(0, humps.Length)];
