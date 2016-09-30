@@ -21,6 +21,22 @@ namespace TARSbot
             client.Log.Message += (s, e) => Console.WriteLine($"[{e.Severity}] {e.Source}: {e.Message}");
             client.MessageReceived += async (s, e) =>
             {
+                if (e.Channel.IsPrivate)
+                {
+                    CommandArgs dm = new CommandArgs(e);
+                    if (dm.Message.RawText.ToLower() == "tars help")
+                    {
+                        await e.Channel.SendMessage(Util.GetInfo());
+                    }
+                    else
+                    {
+                        ulong id = 0;
+                        if (dm.Args.Count() >= 2 && dm.Message.RawText.ToLower().StartsWith("tars getprefix") && ulong.TryParse(dm.Args.ElementAt(1), out id))
+                            await e.Channel.SendMessage("That server's prefix is: `" + DataBase.GetServerPrefix(id) + "`");
+                    }
+                    return;
+                }
+
                 Console.WriteLine("[{0}] [{1}] [{2}]: {3}", e.Server.Name, e.Channel.Name, e.User.Name, e.Message.Text);
 
                 if (e.Message.IsAuthor)
@@ -36,6 +52,16 @@ namespace TARSbot
                 {
                     await e.Channel.SendFile("images/ADate.jpg");
                     return;
+                }
+
+                if (e.Message.RawText.ToLower().Equals("tars help"))
+                {
+                    string currentPrefix = DataBase.GetServerPrefix(e.Server.Id);
+                    if (currentPrefix.ToLower() != "tars")
+                    {
+                        await e.Channel.SendMessage("TARS' prefix for this server is: `" + currentPrefix + "`\nUse `" + currentPrefix + " info`");
+                        return;
+                    }
                 }
 
                 prefix = DataBase.GetServerPrefix(e.Server.Id).Trim().ToLower();
@@ -57,8 +83,8 @@ namespace TARSbot
             client.ExecuteAndWait(async () =>
             {
                 await client.Connect(ConstData.loginToken, TokenType.Bot);
+                client.SetGame("TARS help");
             });
-
         }
     }
 }

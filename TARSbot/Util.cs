@@ -61,6 +61,18 @@ namespace TARSbot
             return paths[rnd.Next(0, paths.Length)];
         }
 
+        public static string GetInfo()
+        {
+            return "```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     " +
+                    "The Bot's default prefix is TARS, at the start of the message.\n     The prefix always uses low caps.\n\n    " +
+                    "Info\nGives this message, with all the details on the bot and its commands.\n\n    " +
+                    "SetPrefix newPrefix\nChanges the current prefix to the new one. (Works per server, needs manage messages permissions and unique user)\n\n    " +
+                    "GetUserId\nBy user id or name (no nicknames), it gives the ID of the mentioned user.\n\n    " +
+                    "GetCurrentChannelId\nGives the ID of the current channel.\n\n    Say\nMakes TARS say anything you want him to.\n\n    " +
+                    "MemeMe\nMakes TARS post a random dank meme.\n\n    FilthyFrankMe\nMakes TARS post a random dank filthy frank meme.\n\n    " +
+                    "AddUniqueUser/RemoveUniqueUser/IsUniqueUser\nBy user id or name (no nicknames), it adds/removes a user from the list. Only unique users can add/remove others. IsUniqueUser returns a boolean.```";
+        }
+
         // TODO: Add all grumps, humps and memes into data base
 
         public static bool IsAuthor(string id)
