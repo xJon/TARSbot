@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace TARSbot
 {
@@ -12,10 +13,12 @@ namespace TARSbot
         private DiscordClient client;
         public static Dictionary<string, Func<CommandArgs, Task>> commands;
         public static string prefix;
+        Timer timer;
 
         public Tars()
         {
             client = new DiscordClient();
+            timer = new Timer(UpdateGameTimer, client, 3000, 14400000);
             commands = new Dictionary<string, Func<CommandArgs, Task>>();
             Commands.Init(commands);
             client.Log.Message += (s, e) => Console.WriteLine($"[{e.Severity}] {e.Source}: {e.Message}");
@@ -25,9 +28,7 @@ namespace TARSbot
                 {
                     CommandArgs dm = new CommandArgs(e);
                     if (dm.Message.RawText.ToLower() == "tars help")
-                    {
                         await e.Channel.SendMessage(Util.GetInfo());
-                    }
                     else
                     {
                         ulong id = 0;
@@ -83,8 +84,12 @@ namespace TARSbot
             client.ExecuteAndWait(async () =>
             {
                 await client.Connect(ConstData.loginToken, TokenType.Bot);
-                client.SetGame("TARS help");
             });
+        }
+        private static void UpdateGameTimer(object o)
+        {
+            ((DiscordClient)o).SetGame("TARS help");
+            Console.WriteLine("DEBUG: Updated game");
         }
     }
 }
