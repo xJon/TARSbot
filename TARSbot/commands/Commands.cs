@@ -15,6 +15,7 @@ namespace TARSbot
             commands.Add("filthyfrankme", FilthyFrankMe);
             commands.Add("getuserid", GetUserId);
             commands.Add("adduniqueuser", AddUniqueUser);
+            commands.Add("adduniqueusers", AddUniqueUsers);
             commands.Add("isuniqueuser", IsUniqueUser);
             commands.Add("removeuniqueuser", RemoveUniqueUser);
             commands.Add("say", Say);
@@ -65,14 +66,41 @@ namespace TARSbot
         public static async Task AddUniqueUser(CommandArgs e)
         {
             Discord.User user = Util.GetUserSecondElement(e);
-            if ((Util.IsAuthor(e.User.Id.ToString()) || (DataBase.IsUniqueUser(e.User.Id))) && user != null)
+            if (user != null && Util.IsAuthor(e.User.Id.ToString()) || (DataBase.IsUniqueUser(e.User.Id)))
             {
                 if (DataBase.AddUniqueUser(user.Name, user.Id))
                     await e.Channel.SendMessage("User successfully added!");
-                else if (DataBase.AddUniqueUser(user.Name, user.Id))
-                    await e.Channel.SendMessage("User successfully added!");
                 else
                     await e.Channel.SendMessage(Util.GetRandomGrump());
+            }
+            else
+                await e.Channel.SendMessage(Util.GetRandomGrump());
+        }
+
+        public static async Task AddUniqueUsers(CommandArgs e)
+        {
+            Discord.User[] users;
+
+            if (e.Server.FindRoles(e.Message.RawText.ToLower().Substring(22)).FirstOrDefault() != null)
+                users = e.Server.FindRoles(e.Message.RawText.ToLower().Substring(22)).FirstOrDefault().Members.ToArray(); 
+            else
+                users = Util.GetUsers(e);
+
+            if (users != null && DataBase.IsUniqueUser(e.User.Id) && e.User.GetPermissions(e.Channel).ManagePermissions)
+            {
+                string s = "The users: ";
+                foreach (Discord.User user in users)
+                {
+                    if (user != null)
+                    {
+                        if (!DataBase.AddUniqueUser(user.Name, user.Id))
+                            await e.Channel.SendMessage(user.Name + " with ID: " + user.Id + "wasn't able to be added as a unique user.");
+                        else
+                            s += user.Name + "; ";
+                    }
+                }
+                if (s != "The users: ")
+                    await e.Channel.SendMessage(s.Substring(0, s.Length - 2) + " were all added successfully as **unique users**.");
             }
             else
                 await e.Channel.SendMessage(Util.GetRandomGrump());

@@ -96,5 +96,22 @@ namespace TARSbot
                 user = e.Server.FindUsers(e.Args.ElementAt(1)).FirstOrDefault();
             return user;
         }
+
+        public static Discord.User[] GetUsers(CommandArgs e)
+        {
+            if (e.Args.Count() < 2)
+                return null;
+
+            Discord.User[] users = new Discord.User[e.Args.Count() - 1];
+            for (int i = 0; i < users.Length; ++i)
+            {
+                ulong id = 0;
+                if (ulong.TryParse(e.Args.ElementAt(i + 1), out id))
+                    users[i] = e.Server.GetUser(id);
+                else if (e.Server.FindUsers(e.Args.ElementAt(i + 1), false).FirstOrDefault() != null)
+                    users[i] = e.Server.FindUsers(e.Args.ElementAt(i + 1)).FirstOrDefault();
+            }
+            return users;
+        }
     }
 }

@@ -55,6 +55,12 @@ namespace TARSbot
                     return;
                 }
 
+                if (e.Message.RawText.ToLower().Equals("ayy"))
+                {
+                    await e.Channel.SendMessage("lmao");
+                    return;
+                }
+
                 if (e.Message.RawText.ToLower().Equals("tars help"))
                 {
                     string currentPrefix = DataBase.GetServerPrefix(e.Server.Id);
