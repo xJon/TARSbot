@@ -81,8 +81,8 @@ namespace TARSbot
         {
             Discord.User[] users;
 
-            if (e.Server.FindRoles(e.Message.RawText.ToLower().Substring(22)).FirstOrDefault() != null)
-                users = e.Server.FindRoles(e.Message.RawText.ToLower().Substring(22)).FirstOrDefault().Members.ToArray(); 
+            if (e.Server.FindRoles(e.Message.RawText.ToLower().Substring(Tars.prefix.Length + 16)).FirstOrDefault() != null)
+                users = e.Server.FindRoles(e.Message.RawText.ToLower().Substring(Tars.prefix.Length + 16)).FirstOrDefault().Members.ToArray(); 
             else
                 users = Util.GetUsers(e);
 

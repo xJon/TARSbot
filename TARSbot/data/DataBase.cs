@@ -47,11 +47,17 @@ namespace TARSbot
             using (var db = new LiteDatabase(ConstData.path))
             {
                 var servers = db.GetCollection<ServerSetting>("servers");
-                var customServerSetting = new ServerSetting { customPrefix = newPrefix, serverID = serverID };
                 if (GetServerPrefix(serverID) == "TARS")
+                {
+                    var customServerSetting = new ServerSetting { customPrefix = newPrefix, serverID = serverID };
                     servers.Insert(customServerSetting);
+                }
                 else
+                {
+                    var customServerSetting = servers.FindOne(Query.EQ("serverID", serverID));
+                    customServerSetting.customPrefix = newPrefix;
                     servers.Update(customServerSetting);
+                }
             }
             return true;
         }
