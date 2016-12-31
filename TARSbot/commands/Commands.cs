@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace TARSbot
 {
@@ -38,6 +39,8 @@ namespace TARSbot
             commands.Add("deletelastmessages", DeleteLastMessages);
             commands.Add("setprefix", SetServerPrefix);
             commands.Add("getprefix", GetServerPrefix);
+            commands.Add("changerolecolor", ChangeRoleColor);
+            commands.Add("getinvitelink", GetInviteLink);
         }
 
         #region
@@ -270,6 +273,45 @@ namespace TARSbot
         public static async Task GetServerPrefix(CommandArgs e)
         {
             await e.Channel.SendMessage("Are you stupid? Anyway: `" + DataBase.GetServerPrefix(e.Server.Id) + "`");
+        }
+
+        public static async Task ChangeRoleColor(CommandArgs e)
+        {
+            if (!e.User.GetPermissions(e.Channel).ManagePermissions || !DataBase.IsUniqueUser(e.User.Id) || e.Args.Count() < 2)
+            {
+                await e.Channel.SendMessage(Util.GetRandomGrump());
+                return;
+            }
+
+            Discord.Role role = e.Server.FindRoles(e.Args.ElementAt(1)).FirstOrDefault();
+            if (role == null || role.Position > e.Server.GetUser(Convert.ToUInt64(ConstData.clientId)).Roles.FirstOrDefault().Position)
+            {
+                await e.Channel.SendMessage(Util.GetRandomGrump());
+            }
+
+            uint numColor = 0;
+            if (!uint.TryParse(e.Args.ElementAt(2), System.Globalization.NumberStyles.HexNumber, null, out numColor))
+            {
+                await e.Channel.SendMessage("I hate this color.");
+                return;
+            }
+
+            Discord.Color dcColor = null;
+            if (numColor != 0)
+                dcColor = new Discord.Color(numColor);
+            if (dcColor == null)
+            {
+                await e.Channel.SendMessage(Util.GetRandomGrump());
+                return;
+            }
+
+            await role.Edit(color: dcColor);
+            await e.Channel.SendMessage(String.Format("The `{0}` role has successfully changed its color.", role.ToString()));
+        }
+
+        public static async Task GetInviteLink(CommandArgs e)
+        {
+            await e.Channel.SendMessage(String.Format("My invite link is:\nhttps://discordapp.com/oauth2/authorize?&client_id={0}&scope=bot&permissions=0", ConstData.clientId));
         }
 
         // TODO: Add eval command

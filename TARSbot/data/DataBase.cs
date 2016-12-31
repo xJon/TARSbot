@@ -71,6 +71,8 @@ namespace TARSbot
                 return (customServerSetting != null && customServerSetting.customPrefix != null) ? customServerSetting.customPrefix : "TARS";
             }
         }
+
+        public static string SetFavoriteColor(string name, uint color)
     }
 
     public class UniqueUser
@@ -85,5 +87,13 @@ namespace TARSbot
         public int Id { get; set; }
         public string customPrefix { get; set; }
         public ulong serverID { get; set; }
+    }
+
+    public class FavoriteColor
+    {
+        public int Id { get; set; }
+        public string name { get; set; }
+        public uint color { get; set; }
+        public string comment { get; set; }
     }
 }

@@ -66,8 +66,10 @@ namespace TARSbot
             return "```∞ TARS ∞\nA bot made by Jon.\nAll the code can be found in GitHub: github.com/xJon/TARSbot \n\n     " +
                     "The Bot's default prefix is TARS, at the start of the message.\n     The prefix always uses low caps.\n\n    " +
                     "Info\nGives this message, with all the details on the bot and its commands.\n\n    " +
+                    "GetInviteLink\nGives the invite link to invite " + Tars.prefix + " to your server, with all the details on the bot and its commands.\n\n    " +
                     "SetPrefix newPrefix\nChanges the current prefix to the new one. (Works per server, needs manage messages permissions and unique user)\n\n    " +
                     "GetPrefix serverID (through a direct message)\nGives the current prefix for the specified server ID\n\n    " +
+                    "ChangeRoleColor HexColor (36393E for example)\nChanges the color of a role if it's below the role of the bot, the bot has manage roles permissions and the user activating it is a unique user.\n\n    " +
                     "GetUserId\nBy user id or name (no nicknames), it gives the ID of the mentioned user.\n\n    " +
                     "GetCurrentChannelId\nGives the ID of the current channel.\n\n    Say\nMakes TARS say anything you want him to.\n\n    " +
                     "MemeMe\nMakes TARS post a random dank meme.\n\n    FilthyFrankMe\nMakes TARS post a random dank filthy frank meme.\n\n    " +
