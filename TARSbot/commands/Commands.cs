@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 
 namespace TARSbot
 {
@@ -51,19 +49,26 @@ namespace TARSbot
 
         public static async Task MemeMe(CommandArgs e)
         {
-            await e.Channel.SendFile(Util.GetRandomMeme());
+            if (DataBase.IsUniqueUser(e.User.Id))
+                await e.Channel.SendFile(Util.GetRandomMeme());
+            else
+                await e.Channel.SendMessage("Sorry but I'm allowed to send memes only to users marked as unique users.");
         }
 
         public static async Task FilthyFrankMe(CommandArgs e)
         {
-            await e.Channel.SendFile(Util.GetRandomFFMeme());
+            if (DataBase.IsUniqueUser(e.User.Id))
+                await e.Channel.SendFile(Util.GetRandomFFMeme());
+            else
+                await e.Channel.SendMessage("Sorry but I'm allowed to send memes only to users marked as unique users.");
+
         }
 
         public static async Task GetUserId(CommandArgs e)
         {
             Discord.User user = Util.GetUserSecondElement(e);
             if (user != null)
-                await e.Channel.SendMessage("This user's Id is: `" + user.Id + "`");
+                await e.Channel.SendMessage("This user's ID is: `" + user.Id + "`");
         }
 
         public static async Task AddUniqueUser(CommandArgs e)
@@ -277,6 +282,12 @@ namespace TARSbot
 
         public static async Task ChangeRoleColor(CommandArgs e)
         {
+            if (!e.Server.GetUser(Convert.ToUInt64(ConstData.clientId)).ServerPermissions.ManageRoles)
+            {
+                await e.Channel.SendMessage("I never thought I'd have to ask you that but.. I need you to give me more power.");
+                return;
+            }
+
             if (!e.User.GetPermissions(e.Channel).ManagePermissions || !DataBase.IsUniqueUser(e.User.Id) || e.Args.Count() < 2)
             {
                 await e.Channel.SendMessage(Util.GetRandomGrump());

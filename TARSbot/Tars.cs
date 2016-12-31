@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
@@ -60,6 +59,13 @@ namespace TARSbot
                     await e.Channel.SendMessage("lmao");
                     return;
                 }
+
+                if (e.Message.RawText.ToLower().StartsWith("present new changes"))
+                {
+                    await e.Channel.SendMessage("In your lame life nothing has changed.\nAnd it's even sadder when you realize " + e.User.Mention + " made me say it.");
+                    return;
+                }
+
 
                 if (e.Message.RawText.ToLower().Equals("tars help"))
                 {
