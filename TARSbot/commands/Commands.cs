@@ -298,6 +298,7 @@ namespace TARSbot
             if (role == null || role.Position > e.Server.GetUser(Convert.ToUInt64(ConstData.clientId)).Roles.FirstOrDefault().Position)
             {
                 await e.Channel.SendMessage(Util.GetRandomGrump());
+                return;
             }
 
             uint numColor = 0;
