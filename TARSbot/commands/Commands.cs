@@ -39,6 +39,7 @@ namespace TARSbot
             commands.Add("getprefix", GetServerPrefix);
             commands.Add("changerolecolor", ChangeRoleColor);
             commands.Add("getinvitelink", GetInviteLink);
+            commands.Add("github", Github);
         }
 
         #region
@@ -324,6 +325,12 @@ namespace TARSbot
         public static async Task GetInviteLink(CommandArgs e)
         {
             await e.Channel.SendMessage(String.Format("My invite link is:\nhttps://discordapp.com/oauth2/authorize?&client_id={0}&scope=bot&permissions=0", ConstData.clientId));
+        }
+        
+        public static async Task Github(CommandArgs e)
+        {
+            await e.Message.Delete();
+            await e.Channel.SendMessage(@"<@106272491042787328> was trying to mess with me!");
         }
 
         // TODO: Add eval command
