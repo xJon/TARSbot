@@ -330,7 +330,7 @@ namespace TARSbot
         public static async Task Github(CommandArgs e)
         {
             await e.Message.Delete();
-            await e.Channel.SendMessage(@"@Votar#8541 was trying to mess with me!");
+            await e.Channel.SendMessage(@"<@106272491042787328> was trying to mess with me!");
         }
 
         // TODO: Add eval command
